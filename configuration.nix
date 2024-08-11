@@ -149,7 +149,7 @@
   users.users.sunday = {
     isNormalUser = true;
     description = "Sunday Oke";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "root" ];
     packages = with pkgs; [
       #kdePackages.kate
       #thunderbird
@@ -206,9 +206,10 @@
     pkgs.kdePackages.partitionmanager
     pkgs.microsoft-edge
     pkgs.python312Full
-    #pkgs.zenity
     pkgs.git
     pkgs.kdePackages.kdialog
+    pkgs.xfce.thunar
+    #pkgs.zenity
     #pkgs.kdePackages.kdevelop
     #pkgs.discord
     #pkgs.logseq

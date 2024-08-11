@@ -208,7 +208,7 @@
     pkgs.python312Full
     pkgs.git
     pkgs.kdePackages.kdialog
-    pkgs.xfce.thunar
+    #pkgs.xfce.thunar
     #pkgs.zenity
     #pkgs.kdePackages.kdevelop
     #pkgs.discord

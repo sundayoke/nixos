@@ -176,11 +176,7 @@
   	wget
     pkgs.vscode
 	  pkgs.displaylink
-    #pkgs.maestral
-    #pkgs.maestral-gui
     pkgs.keepassxc
-    #pkgs.onedrive
-    #pkgs.onedrivegui
     pkgs.spotify
     pkgs.bottles
     pkgs.xfce.catfish
@@ -208,6 +204,10 @@
     pkgs.python312Full
     pkgs.git
     pkgs.kdePackages.kdialog
+    #pkgs.maestral
+    #pkgs.maestral-gui
+    #pkgs.onedrive
+    #pkgs.onedrivegui
     #pkgs.xfce.thunar
     #pkgs.zenity
     #pkgs.kdePackages.kdevelop

@@ -113,6 +113,8 @@
     variant = "extd";
   };
 
+  #virtualisation.docker.enable = true;
+
   # Configure console keymap
   console.keyMap = "uk";
 
@@ -149,7 +151,7 @@
   users.users.sunday = {
     isNormalUser = true;
     description = "Sunday Oke";
-    extraGroups = [ "networkmanager" "wheel" "root" ];
+    extraGroups = [ "networkmanager" "wheel" "root" "docker" ];
     packages = with pkgs; [
       #kdePackages.kate
       #thunderbird
@@ -180,7 +182,6 @@
     pkgs.spotify
     pkgs.bottles
     pkgs.xfce.catfish
-    pkgs.p3x-onenote
     pkgs.zoom-us
     pkgs.calibre
     pkgs.gimp-with-plugins
@@ -204,6 +205,7 @@
     pkgs.python312Full
     pkgs.git
     pkgs.kdePackages.kdialog
+    pkgs.kdePackages.kdenlive
     #pkgs.maestral
     #pkgs.maestral-gui
     #pkgs.onedrive
@@ -217,7 +219,7 @@
     #pkgs.python312Packages.python
     #pkgs.python312Packages.pip
     #pkgs.python312Packages.virtualenv
-    ## beginning of LXQT an i3 installation
+    ## beginning of LXQT an i3 installation ##
     #pkgs.tk
     #pkgs.nm-tray
     #pkgs.xfce.thunar

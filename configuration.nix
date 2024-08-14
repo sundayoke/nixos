@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #./nix-ld.nix
+      ./nix-ld.nix
     ];
 
   # Bootloader.
@@ -53,18 +53,21 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  ## Enable the KDE Plasma Desktop Environment.
+  # Enable XFCE
   services.displayManager.sddm.wayland.enable = true;
-  #services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
 
-  environment.plasma6.excludePackages = with pkgs; [
-    mate.mate-terminal
-    vlc
-    pkgs.libsForQt5.baloo
-    pkgs.kdePackages.elisa
-    pkgs.kdePackages.kate
-  ];
+  ## Enable the KDE Plasma Desktop Environment.
+  #services.displayManager.sddm.wayland.enable = true;
+  #services.desktopManager.plasma6.enable = true;
+
+  #environment.plasma6.excludePackages = with pkgs; [
+  #  mate.mate-terminal
+  #  vlc
+  #  pkgs.libsForQt5.baloo
+  #  pkgs.kdePackages.elisa
+  #  pkgs.kdePackages.kate
+  #];
 
   ##Enable the Budgie Desktop Environment.
   #services.xserver.desktopManager.budgie.enable = true;
@@ -206,6 +209,9 @@
     pkgs.git
     pkgs.kdePackages.kdialog
     pkgs.kdePackages.kdenlive
+    pkgs.fuse3
+    pkgs.lsof
+    pkgs.gnupatch
     #pkgs.maestral
     #pkgs.maestral-gui
     #pkgs.onedrive

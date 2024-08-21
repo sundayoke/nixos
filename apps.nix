@@ -32,15 +32,17 @@
     pkgs.microsoft-edge
     pkgs.python312Full
     pkgs.git
+    pkgs.winetricks
+    pkgs.fuse3
     #pkgs.kdePackages.kdialog
     #pkgs.kdePackages.kdenlive
-    #pkgs.haskellPackages.libfuse3
+    pkgs.haskellPackages.libfuse3
     #pkgs.maestral
     #pkgs.maestral-gui
     #pkgs.onedrive
     #pkgs.onedrivegui
     #pkgs.xfce.thunar
-    #pkgs.zenity
+    pkgs.zenity
     #pkgs.kdePackages.kdevelop
     #pkgs.discord
     #pkgs.logseq
@@ -49,7 +51,7 @@
     #pkgs.python312Packages.pip
     #pkgs.python312Packages.virtualenv
     ## beginning of LXQT an i3 installation ##
-    #pkgs.tk
+    pkgs.tk
     #pkgs.nm-tray
     #pkgs.xfce.thunar
     #pkgs.dolphin

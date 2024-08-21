@@ -61,8 +61,8 @@
   #services.xserver.desktopManager.xfce.enable = true;
 
   ## Enable the KDE Plasma Desktop Environment.
-  #services.displayManager.sddm.wayland.enable = true;
-  #services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   #environment.plasma6.excludePackages = with pkgs; [
   #  mate.mate-terminal
@@ -83,8 +83,11 @@
 
    ##Enable the LXQT Desktop Environment.
   #services.xserver.displayManager.sddm.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.lxqt.enable = true;
+  #services.displayManager.sddm.enable = true;
+  #services.xserver.desktopManager.lxqt.enable = true;
+
+  #deepin
+  #services.xserver.desktopManager.deepin.enable = true;
 
    ##Enable the i3 Desktop Environment.
   #services.displayManager.sddm.enable = true;
@@ -133,6 +136,9 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
+
+  services.samba.enable = true;
+  services.samba.enableWinbindd = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;

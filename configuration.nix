@@ -10,7 +10,8 @@
       ./hardware-configuration.nix
       ./nix-ld.nix
       ./apps.nix
-      ./xfce.nix
+      #./lxqt.nix
+      #./xfce.nix
     ];
 
   # Bootloader.
@@ -21,7 +22,7 @@
   #boot.supportedFilesystems = [ "ntfs" ];
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -56,8 +57,8 @@
   services.xserver.enable = true;
 
   # Enable XFCE
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.desktopManager.xfce.enable = true;
 
   ## Enable the KDE Plasma Desktop Environment.
   #services.displayManager.sddm.wayland.enable = true;
@@ -82,8 +83,8 @@
 
    ##Enable the LXQT Desktop Environment.
   #services.xserver.displayManager.sddm.enable = true;
-  #services.displayManager.sddm.enable = true;
-  #services.xserver.desktopManager.lxqt.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.lxqt.enable = true;
 
    ##Enable the i3 Desktop Environment.
   #services.displayManager.sddm.enable = true;

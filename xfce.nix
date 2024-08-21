@@ -2,9 +2,9 @@
 {
   environment = {
     systemPackages = with pkgs; [
-      pkgs.blueman
+      #pkgs.blueman
       pkgs.git
-      chromium
+      #chromium
       deja-dup
       drawing
       elementary-xfce-icon-theme
@@ -13,15 +13,15 @@
       foliate
       font-manager
       gimp-with-plugins
-      gnome.file-roller
-      gnome.gnome-disk-utility
+      #gnome.file-roller
+      #gnome.gnome-disk-utility
       inkscape-with-extensions
       libqalculate
-      libreoffice
-      orca
+      #libreoffice
+      #orca
       pavucontrol
       qalculate-gtk
-      thunderbird
+      #thunderbird
       wmctrl
       xclip
       xcolor
@@ -52,6 +52,7 @@
       xwinmosaic
       zuki-themes
       pkgs.vscode
+      pkgs.xfce.xfce4-whiskermenu-plugin
     ];
   };
 

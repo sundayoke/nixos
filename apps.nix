@@ -34,6 +34,9 @@
     pkgs.git
     pkgs.winetricks
     pkgs.fuse3
+    pkgs.haskellPackages.libfuse3
+    pkgs.libjpeg8
+    pkgs.kdePackages.kalk
     #pkgs.kdePackages.kdialog
     #pkgs.kdePackages.kdenlive
     pkgs.haskellPackages.libfuse3
@@ -42,7 +45,7 @@
     #pkgs.onedrive
     #pkgs.onedrivegui
     #pkgs.xfce.thunar
-    pkgs.zenity
+    pkgs.gnome.zenity
     #pkgs.kdePackages.kdevelop
     #pkgs.discord
     #pkgs.logseq

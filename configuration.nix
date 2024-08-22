@@ -138,7 +138,6 @@
   services.blueman.enable = true;
 
   services.samba.enable = true;
-  services.samba.enableWinbindd = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -179,6 +178,14 @@
   programs.direnv.enable = true;
 
   #programs.nm-applet.enable = true;
+
+  #Aliases
+  programs.bash.shellAliases = {
+  l = "ls -alh";
+  ll = "ls -l";
+  ls = "ls --color=tty";
+  cls = "clear";
+};
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

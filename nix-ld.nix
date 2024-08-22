@@ -58,8 +58,8 @@
     xorg.libxshmfence
     stdenv.cc.cc
     zlib
-    fuse3
-    fuse
+    #fuse3
+    #fuse
     icu
     openssl
     curl

@@ -48,7 +48,7 @@
     pkgs.gnome.zenity
     #pkgs.kdePackages.kdevelop
     #pkgs.discord
-    #pkgs.logseq
+    pkgs.logseq
     #pkgs.jupyter-all
     #pkgs.python312Packages.python
     #pkgs.python312Packages.pip

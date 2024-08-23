@@ -52,9 +52,25 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
+  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
+
+  # Extra Window Managers
+  #services.xserver.windowManager.stumpwm.enable = true;
+  #services.xserver.windowManager.ratpoison.enable = true;
+  #services.xserver.windowManager.exwm.enable = true;
+  #services.xserver.windowManager.i3 = {
+  #    enable = true;
+  #    extraPackages = with pkgs; [
+  #      dmenu #application launcher most people use
+  #      i3status # gives you the default i3 status bar
+  #      i3lock #default i3 screen locker
+  #      i3blocks #if you are planning on using i3blocks over i3status
+  #   ];
+  #  };
 
   # Enable XFCE
   #services.xserver.displayManager.lightdm.enable = true;
@@ -129,6 +145,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable Flatpak
+  services.flatpak.enable = true;
 
   #Enable DisplayLink Video Serice
   services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
@@ -205,8 +224,34 @@
   dina-font
   proggyfonts
   open-sans
+  fira-code
+  fira
+  cooper-hewitt
+  ibm-plex
+  jetbrains-mono
+  iosevka
+  # bitmap
+  spleen
+  fira-code-symbols
+  powerline-fonts
+  #nerdfonts
 ];
 
+    boot.kernel.sysctl = {
+    "kernel.sysrq" = 1;                       # SysRQ for is rebooting their machine properly if it freezes: SOURCE: https://oglo.dev/tutorials/sysrq/index.html
+    "net.core.rmem_default" = 16777216;       # Default socket receive buffer size, improve network performance & applications that use sockets
+    "net.core.rmem_max" = 16777216;           # Maximum socket receive buffer size, determin the amount of data that can be buffered in memory for network operations
+    "net.core.wmem_default" = 16777216;       # Default socket send buffer size, improve network performance & applications that use sockets
+    "net.core.wmem_max" = 16777216;           # Maximum socket send buffer size, determin the amount of data that can be buffered in memory for network operations
+    "net.ipv4.tcp_keepalive_intvl" = 30;      # TCP keepalive interval between probes, TCP keepalive probes, which are used to detect if a connection is still alive.
+    "net.ipv4.tcp_keepalive_probes" = 5;      # TCP keepalive probes, TCP keepalive probes, which are used to detect if a connection is still alive.
+    "net.ipv4.tcp_keepalive_time" = 300;      # TCP keepalive interval (seconds), TCP keepalive probes, which are used to detect if a connection is still alive.
+    "vm.dirty_background_bytes" = 268435456;  # 256 MB in bytes, data that has been modified in memory and needs to be written to disk
+    "vm.dirty_bytes" = 1073741824;            # 1 GB in bytes, data that has been modified in memory and needs to be written to disk
+    "vm.min_free_kbytes" = 65536;             # Minimum free memory for safety (in KB), can help prevent memory exhaustion situations
+    "vm.swappiness" = 70;                      # how aggressively the kernel swaps data from RAM to disk. Lower values prioritize keeping data in RAM,
+    "vm.vfs_cache_pressure" = 50;             # Adjust vfs_cache_pressure (0-1000), how the kernel reclaims memory used for caching filesystem objects
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

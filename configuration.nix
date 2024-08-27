@@ -58,19 +58,7 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Extra Window Managers
-  #services.xserver.windowManager.stumpwm.enable = true;
-  #services.xserver.windowManager.ratpoison.enable = true;
-  #services.xserver.windowManager.exwm.enable = true;
-  #services.xserver.windowManager.i3 = {
-  #    enable = true;
-  #    extraPackages = with pkgs; [
-  #      dmenu #application launcher most people use
-  #      i3status # gives you the default i3 status bar
-  #      i3lock #default i3 screen locker
-  #      i3blocks #if you are planning on using i3blocks over i3status
-  #   ];
-  #  };
+
 
   # Enable XFCE
   #services.xserver.displayManager.lightdm.enable = true;
@@ -80,13 +68,14 @@
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-  #environment.plasma6.excludePackages = with pkgs; [
-  #  mate.mate-terminal
-  #  vlc
-  #  pkgs.libsForQt5.baloo
-  #  pkgs.kdePackages.elisa
-  #  pkgs.kdePackages.kate
-  #];
+  environment.plasma6.excludePackages = with pkgs; [
+  mate.mate-terminal
+  vlc
+  pkgs.libsForQt5.baloo
+  pkgs.kdePackages.elisa
+  pkgs.kdePackages.kate
+  pkgs.xterm
+  ];
 
   ##Enable the Budgie Desktop Environment.
   #services.xserver.desktopManager.budgie.enable = true;
@@ -131,6 +120,26 @@
   #hitori # sudoku game
   #atomix # puzzle game
 #]);
+
+    # Extra Window Managers
+  #services.xserver.windowManager.stumpwm.enable = true;
+  #services.xserver.windowManager.ratpoison.enable = true;
+  #services.xserver.windowManager.exwm.enable = true;
+  services.xserver.windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        i3lock #default i3 screen locker
+        i3blocks #if you are planning on using i3blocks over i3status
+        pkgs.rofi
+        pkgs.networkmanagerapplet
+        pkgs.pasystray
+        pkgs.volumeicon
+        pkgs.pa_applet
+        pkgs.lxde.lxrandr
+     ];
+    };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -249,7 +258,7 @@
     "vm.dirty_background_bytes" = 268435456;  # 256 MB in bytes, data that has been modified in memory and needs to be written to disk
     "vm.dirty_bytes" = 1073741824;            # 1 GB in bytes, data that has been modified in memory and needs to be written to disk
     "vm.min_free_kbytes" = 65536;             # Minimum free memory for safety (in KB), can help prevent memory exhaustion situations
-    "vm.swappiness" = 70;                      # how aggressively the kernel swaps data from RAM to disk. Lower values prioritize keeping data in RAM,
+    "vm.swappiness" = 60;                      # how aggressively the kernel swaps data from RAM to disk. Lower values prioritize keeping data in RAM,
     "vm.vfs_cache_pressure" = 50;             # Adjust vfs_cache_pressure (0-1000), how the kernel reclaims memory used for caching filesystem objects
   };
   # Some programs need SUID wrappers, can be configured further or are

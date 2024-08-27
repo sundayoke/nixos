@@ -13,7 +13,6 @@
     pkgs.zoom-us
     pkgs.calibre
     pkgs.gimp-with-plugins
-    pkgs.wpsoffice
     pkgs.libreoffice
     pkgs.google-chrome
     pkgs.vlc
@@ -25,7 +24,6 @@
     pkgs.libxml2
     pkgs.bc
     pkgs.cabextract
-    pkgs.cryptomator
     pkgs.wineWowPackages.stagingFull
     pkgs.openvpn
     pkgs.kdePackages.partitionmanager
@@ -48,7 +46,6 @@
     pkgs.gnome.zenity
     #pkgs.kdePackages.kdevelop
     #pkgs.discord
-    pkgs.logseq
     #pkgs.jupyter-all
     #pkgs.python312Packages.python
     #pkgs.python312Packages.pip

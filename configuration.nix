@@ -94,10 +94,6 @@
   #deepin
   #services.xserver.desktopManager.deepin.enable = true;
 
-   ##Enable the i3 Desktop Environment.
-  #services.displayManager.sddm.enable = true;
-  #services.xserver.windowManager.i3.enable = true;
-
   ##Enable the Gnome Desktop Environment.
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
@@ -125,6 +121,7 @@
   #services.xserver.windowManager.stumpwm.enable = true;
   #services.xserver.windowManager.ratpoison.enable = true;
   #services.xserver.windowManager.exwm.enable = true;
+  ##Enable the i3 Desktop Environment.
   services.xserver.windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [

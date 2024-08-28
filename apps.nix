@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
+
+let
+    unstable = import <unstable> {};
+in
 {
-  environment = {
-    systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano
   	wget
     pkgs.vscode
@@ -24,13 +27,14 @@
     pkgs.libxml2
     pkgs.bc
     pkgs.cabextract
-    pkgs.wineWowPackages.stagingFull
+    #pkgs.wineWowPackages.stagingFull
+    unstable.pkgs.wineWowPackages.stagingFull
     pkgs.openvpn
     pkgs.kdePackages.partitionmanager
     pkgs.microsoft-edge
     pkgs.python312Full
     pkgs.git
-    pkgs.winetricks
+    #pkgs.winetricks
     pkgs.fuse3
     pkgs.haskellPackages.libfuse3
     pkgs.libjpeg8
@@ -67,7 +71,7 @@
     #pkgs.polkit
     #pkgs.libsForQt5.polkit-qt
     ];
-  };
+    sound.enable = true;
+  }
 
-  sound.enable = true;
-}
+

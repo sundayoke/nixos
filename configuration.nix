@@ -8,8 +8,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./nix-ld.nix
       ./apps.nix
+      #./nix-ld.nix
       #./lxqt.nix
       #./xfce.nix
     ];

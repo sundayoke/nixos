@@ -8,10 +8,10 @@ in
     vim # Do not forget to add an editor to edit configuration.nix! The Nano
   	wget
     pkgs.vscode
-	  pkgs.displaylink
+	  #pkgs.displaylink
     pkgs.keepassxc
     pkgs.spotify
-    pkgs.bottles
+    #pkgs.bottles
     pkgs.xfce.catfish
     pkgs.zoom-us
     pkgs.calibre
@@ -21,25 +21,26 @@ in
     pkgs.vlc
     pkgs.insync
     pkgs.dialog
-    pkgs.newt
-    pkgs.lsof
-    pkgs.samba4Full
-    pkgs.libxml2
-    pkgs.bc
-    pkgs.cabextract
-    #pkgs.wineWowPackages.stagingFull
-    unstable.pkgs.wineWowPackages.stagingFull
-    pkgs.openvpn
     pkgs.kdePackages.partitionmanager
     pkgs.microsoft-edge
     pkgs.python312Full
     pkgs.git
-    #pkgs.fuse3
-    #pkgs.haskellPackages.libfuse3
     pkgs.libjpeg8
     pkgs.kdePackages.kalk
     pkgs.winetricks
     pkgs.isoimagewriter
+    pkgs.xfce.thunar
+    #pkgs.newt
+    #pkgs.lsof
+    #pkgs.samba4Full
+    #pkgs.libxml2pkgs.xfce.thunar
+    #pkgs.bc
+    #pkgs.cabextract
+    #pkgs.wineWowPackages.stagingFull
+    #unstable.pkgs.wineWowPackages.stagingFull
+    #pkgs.openvpn
+    #pkgs.fuse3
+    #pkgs.haskellPackages.libfuse3
     #pkgs.apt
     #pkgs.appimage-run
     #pkgs.kdePackages.kdialog
@@ -48,7 +49,6 @@ in
     #pkgs.maestral-gui
     #pkgs.onedrive
     #pkgs.onedrivegui
-    #pkgs.xfce.thunar
     #pkgs.gnome.zenity
     #pkgs.kdePackages.kdevelop
     #pkgs.discord
@@ -59,7 +59,6 @@ in
     ## beginning of LXQT an i3 installation ##
     #pkgs.tk
     #pkgs.nm-tray
-    #pkgs.xfce.thunar
     #pkgs.dolphin
     #pkgs.rofi
     #pkgs.terminator

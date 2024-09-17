@@ -16,13 +16,16 @@ in
     pkgs.zoom-us
     pkgs.calibre
     pkgs.gimp-with-plugins
-    pkgs.libreoffice
+    unstable.pkgs.libreoffice
     pkgs.google-chrome
     pkgs.vlc
+    pkgs.obs-studio
+    pkgs.jdk
     pkgs.insync
     pkgs.dialog
     pkgs.kdePackages.partitionmanager
     pkgs.microsoft-edge
+    #unstable.pkgs.haskellPackages.trim
     pkgs.python312Full
     pkgs.git
     pkgs.libjpeg8
@@ -31,30 +34,33 @@ in
     pkgs.isoimagewriter
     pkgs.xfce.thunar
     #pkgs.newt
-    #pkgs.lsof
-    #pkgs.samba4Full
+    pkgs.lsof
+    pkgs.gnupatch
+    pkgs.libxml2
+    pkgs.samba4Full
     #pkgs.libxml2pkgs.xfce.thunar
-    #pkgs.bc
-    #pkgs.cabextract
+    pkgs.bc
+    pkgs.cabextract
     #pkgs.wineWowPackages.stagingFull
-    #unstable.pkgs.wineWowPackages.stagingFull
+    unstable.pkgs.wineWowPackages.stagingFull
     #pkgs.openvpn
-    #pkgs.fuse3
-    #pkgs.haskellPackages.libfuse3
+    pkgs.fuse3
+    pkgs.haskellPackages.libfuse3
     #pkgs.apt
     #pkgs.appimage-run
-    #pkgs.kdePackages.kdialog
+    pkgs.kdePackages.kdialog
+    pkgs.mktemp
     #pkgs.kdePackages.kdenlive
     #pkgs.maestral
     #pkgs.maestral-gui
     #pkgs.onedrive
     #pkgs.onedrivegui
-    #pkgs.gnome.zenity
+    pkgs.gnome.zenity
     #pkgs.kdePackages.kdevelop
     #pkgs.discord
     #pkgs.jupyter-all
     #pkgs.python312Packages.python
-    #pkgs.python312Packages.pip
+    pkgs.python312Packages.pip
     #pkgs.python312Packages.virtualenv
     ## beginning of LXQT an i3 installation ##
     #pkgs.tk

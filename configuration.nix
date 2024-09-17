@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./apps.nix
-      #./nix-ld.nix
+      ./nix-ld.nix
       #./lxqt.nix
       #./xfce.nix
     ];
@@ -32,8 +32,8 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  #time.timeZone = "Europe/London";
-  time.timeZone = "Europe/Malta";
+  time.timeZone = "Europe/London";
+  #time.timeZone = "Europe/Malta";
   #time.timeZone = "Africa/Accra";
   #time.timeZone = "Africa/Lagos";
 
@@ -58,7 +58,9 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-
+  ## Enable MATE Desktop environment
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.mate.enable = true;
 
   # Enable XFCE
   #services.xserver.displayManager.lightdm.enable = true;
@@ -152,8 +154,15 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.avahi = {
+  enable = true;
+  nssmdns4 = true;
+  openFirewall = true;
+};
+
   # Enable Flatpak
-  services.flatpak.enable = true;
+  #xdg.portal.enable = true;
+  #services.flatpak.enable = true;
 
   #Enable DisplayLink Video Serice
   services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
@@ -210,6 +219,7 @@
   ll = "ls -l";
   ls = "ls --color=tty";
   cls = "clear";
+  CLS = "clear";
 };
 
   # Allow unfree packages

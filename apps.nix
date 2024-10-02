@@ -7,6 +7,7 @@ in
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano
   	wget
+    pkgs.notepadqq
     pkgs.vscode
 	  #pkgs.displaylink
     pkgs.keepassxc
@@ -32,9 +33,10 @@ in
     pkgs.kdePackages.kalk
     pkgs.winetricks
     pkgs.isoimagewriter
-    pkgs.xfce.thunar
+    #pkgs.xfce.thunar
     #pkgs.newt
     pkgs.lsof
+    pkgs.gnome.gnome-tweaks
     pkgs.gnupatch
     pkgs.libxml2
     pkgs.samba4Full
@@ -47,6 +49,7 @@ in
     pkgs.fuse3
     pkgs.haskellPackages.libfuse3
     #pkgs.apt
+    pkgs.brlaser
     #pkgs.appimage-run
     pkgs.kdePackages.kdialog
     pkgs.mktemp
@@ -72,7 +75,8 @@ in
     #pkgs.lxde.lxrandr
     #pkgs.i3blocks
     #pkgs.konsole
-    #pkgs.feh
+    pkgs.feh
+    pkgs.gnome.dconf-editor
     #pkgs.libsForQt5.polkit-kde-agent
     #pkgs.polkit_gnome
     #pkgs.polkit

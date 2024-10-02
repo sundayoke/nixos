@@ -21,7 +21,7 @@
 # Enable NTFS at boot
   #boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "peak-nixos-002"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -32,8 +32,8 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/London";
-  #time.timeZone = "Europe/Malta";
+  #time.timeZone = "Europe/London";
+  time.timeZone = "Europe/Malta";
   #time.timeZone = "Africa/Accra";
   #time.timeZone = "Africa/Lagos";
 
@@ -67,17 +67,17 @@
   #services.xserver.desktopManager.xfce.enable = true;
 
   ## Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  #services.displayManager.sddm.wayland.enable = true;
+  #services.desktopManager.plasma6.enable = true;
 
-  environment.plasma6.excludePackages = with pkgs; [
-  mate.mate-terminal
-  vlc
-  pkgs.libsForQt5.baloo
-  pkgs.kdePackages.elisa
-  pkgs.kdePackages.kate
-  pkgs.xterm
-  ];
+  #environment.plasma6.excludePackages = with pkgs; [
+  #mate.mate-terminal
+  #vlc
+  #pkgs.libsForQt5.baloo
+  #pkgs.kdePackages.elisa
+  #pkgs.kdePackages.kate
+  #pkgs.xterm
+  #];
 
   ##Enable the Budgie Desktop Environment.
   #services.xserver.desktopManager.budgie.enable = true;
@@ -89,35 +89,36 @@
   #];
 
    ##Enable the LXQT Desktop Environment.
-  #services.xserver.displayManager.sddm.enable = true;
-  #services.displayManager.sddm.enable = true;
+  #services.displayManager.sddm.wayland.enable = true;
   #services.xserver.desktopManager.lxqt.enable = true;
 
   #deepin
+  #services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.deepin.enable = true;
 
   ##Enable the Gnome Desktop Environment.
-  #services.xserver.displayManager.gdm.enable = true;
-  #services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
-  #environment.gnome.excludePackages = (with pkgs; [
-  #gnome-photos
-  #gnome-tour
-#]) ++ (with pkgs.gnome; [
-  #cheese # webcam tool
-  #gnome-music
-  #gnome-terminal
-  #pkgs.gedit # text editor
-  #epiphany # web browser
-  #geary # email reader
-  #evince # document viewer
-  #gnome-characters
-  #totem # video player
-  #tali # poker game
-  #iagno # go game
-  #hitori # sudoku game
-  #atomix # puzzle game
-#]);
+  environment.gnome.excludePackages = (with pkgs; [
+  gnome-photos
+  gnome-tour
+]) ++ (with pkgs.gnome; [
+  cheese # webcam tool
+  gnome-music
+  gnome-terminal
+  pkgs.gedit # text editor
+  epiphany # web browser
+  geary # email reader
+  evince # document viewer
+  gnome-characters
+  totem # video player
+  tali # poker game
+  iagno # go game
+  hitori # sudoku game
+  atomix # puzzle game
+]);
 
     # Extra Window Managers
   #services.xserver.windowManager.stumpwm.enable = true;
@@ -161,8 +162,8 @@
 };
 
   # Enable Flatpak
-  #xdg.portal.enable = true;
-  #services.flatpak.enable = true;
+  xdg.portal.enable = true;
+  #ervices.flatpak.enable = true;
 
   #Enable DisplayLink Video Serice
   services.xserver.videoDrivers = [ "displaylink" "modesetting" ];

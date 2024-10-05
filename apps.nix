@@ -5,6 +5,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
+    #gnomeExtensions.appindicator
     vim # Do not forget to add an editor to edit configuration.nix! The Nano
   	wget
     pkgs.notepadqq
@@ -30,7 +31,7 @@ in
     pkgs.python312Full
     pkgs.git
     pkgs.libjpeg8
-    pkgs.kdePackages.kalk
+    #pkgs.kdePackages.kalk
     pkgs.winetricks
     pkgs.isoimagewriter
     #pkgs.xfce.thunar

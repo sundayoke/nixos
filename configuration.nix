@@ -101,6 +101,9 @@
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+ #environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator ];
+ services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+
   environment.gnome.excludePackages = (with pkgs; [
   gnome-photos
   gnome-tour
@@ -118,6 +121,12 @@
   iagno # go game
   hitori # sudoku game
   atomix # puzzle game
+  simple-scan
+  gnome-weather
+  gnome-contacts
+  gnome-calculator
+  pkgs.xterm
+  pkgs.gnome-text-editor
 ]);
 
     # Extra Window Managers

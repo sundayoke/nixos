@@ -116,7 +116,7 @@
   pkgs.gedit # text editor
   epiphany # web browser
   geary # email reader
-  evince # document viewer
+  #evince # document viewer
   gnome-characters
   totem # video player
   tali # poker game
@@ -158,7 +158,7 @@
     variant = "extd";
   };
 
-  #virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -211,7 +211,7 @@
     extraGroups = [ "networkmanager" "wheel" "root" "docker" ];
     packages = with pkgs; [
       #kdePackages.kate
-      #thunderbird
+      thunderbird
     ];
   };
 

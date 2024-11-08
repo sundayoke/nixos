@@ -35,6 +35,8 @@ in
     pkgs.winetricks
     pkgs.isoimagewriter
     #pkgs.xfce.thunar
+    #unstable.pkgs.thunderbird-bin
+    #unstable.pkgs.thunderbird-latest-unwrapped
     #pkgs.newt
     pkgs.lsof
     pkgs.gnome.gnome-tweaks
@@ -67,7 +69,8 @@ in
     pkgs.python312Packages.pip
     #pkgs.python312Packages.virtualenv
     ## beginning of LXQT an i3 installation ##
-    #pkgs.tk
+    pkgs.tk
+    pkgs.wireguard-tools
     #pkgs.nm-tray
     #pkgs.dolphin
     #pkgs.rofi
@@ -82,6 +85,11 @@ in
     #pkgs.polkit_gnome
     #pkgs.polkit
     #pkgs.libsForQt5.polkit-qt
+    #pkgs.megasync
+    #pkgs.gnomeExtensions.mock-tray
+    pkgs.docker
+    pkgs.gparted
+    pkgs.binutils
     ];
     sound.enable = true;
   }

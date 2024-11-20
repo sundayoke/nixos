@@ -158,7 +158,34 @@
     variant = "extd";
   };
 
-  virtualisation.docker.enable = true;
+  #virtualisation.docker.enable = true;
+  virtualisation.libvirtd = {
+  enable = true;
+  qemu = {
+    package = pkgs.qemu_kvm;
+    runAsRoot = true;
+    swtpm.enable = true;
+    ovmf = {
+      enable = true;
+      packages = [(pkgs.OVMF.override {
+        secureBoot = true;
+        tpmSupport = true;
+      }).fd];
+    };
+  };
+};
+
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "networkmanager" "wheel" "root" "sunday" "qemu-libvirtd" "libvirtd" "video" "audio" "disk" "networkmanager" ];
+  environment.systemPackages = [ pkgs.vagrant ];
+  systemd.user.sockets.vagrant.listenStreams = [ "8880" ];
+  systemd.user.services.vagrant = {
+    path = with pkgs; [ vagrant virtualbox curl ];
+    script = "vagrant up --provision --no-tty --no-color";
+    serviceConfig.WorkingDirectory = "/home/sunday/vagrant";
+  };
+
 
   # Configure console keymap
   console.keyMap = "uk";
@@ -208,7 +235,10 @@
   users.users.sunday = {
     isNormalUser = true;
     description = "Sunday Oke";
-    extraGroups = [ "networkmanager" "wheel" "root" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "root" "qemu-libvirtd" "libvirtd" "video" "audio" "disk" "networkmanager" ];
+    group = "users";
+    home = "/home/sunday";
+    uid = 1000;
     packages = with pkgs; [
       #kdePackages.kate
       thunderbird

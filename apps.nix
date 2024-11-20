@@ -10,10 +10,16 @@ in
   	wget
     pkgs.notepadqq
     pkgs.vscode
+    pkgs.opera
+    #pkgs.brave
 	  #pkgs.displaylink
     pkgs.keepassxc
     pkgs.spotify
+    graphviz-nox
     #pkgs.bottles
+    #pkgs.vagrant
+    pkgs.qemu
+    pkgs.virt-manager
     pkgs.xfce.catfish
     pkgs.zoom-us
     pkgs.calibre
@@ -34,6 +40,7 @@ in
     #pkgs.kdePackages.kalk
     pkgs.winetricks
     pkgs.isoimagewriter
+    pkgs.discord
     #pkgs.xfce.thunar
     #unstable.pkgs.thunderbird-bin
     #unstable.pkgs.thunderbird-latest-unwrapped
@@ -87,7 +94,7 @@ in
     #pkgs.libsForQt5.polkit-qt
     #pkgs.megasync
     #pkgs.gnomeExtensions.mock-tray
-    pkgs.docker
+    #pkgs.docker
     pkgs.gparted
     pkgs.binutils
     ];

@@ -4,6 +4,7 @@
 
 { config, pkgs, ... }:
 
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -11,20 +12,16 @@
       ./apps.nix
       ./nix-ld.nix
       #./lxqt.nix
-      #./xfce.nix
     ];
-  # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-# Enable NTFS at boot
-  #boot.supportedFilesystems = [ "ntfs" ];
+  networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  networking.hostName = "peak-nixos-002"; # Define your hostname.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -54,13 +51,19 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw
-
   # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  ## Enable MATE Desktop environment
+  ## Enable Docker
+  virtualisation.docker.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  #services.xserver.displayManager.gdm.wayland.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
+
+  #services.wg-netmanager.enable = true;
+
+## Enable MATE Desktop environment
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.mate.enable = true;
 
@@ -71,6 +74,14 @@
   ## Enable the KDE Plasma Desktop Environment.
   #services.displayManager.sddm.wayland.enable = true;
   #services.desktopManager.plasma6.enable = true;
+
+  ##Enable cinnamon
+  services.libinput.enable = true;
+  ###services.xserver.displayManager.lightdm.enable =true;
+  services.xserver.displayManager.gdm.wayland.enable = true;
+  services.xserver.desktopManager.cinnamon.enable = true;
+  services.displayManager.defaultSession = "cinnamon";
+
 
   #environment.plasma6.excludePackages = with pkgs; [
   #mate.mate-terminal
@@ -99,118 +110,17 @@
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.deepin.enable = true;
 
-  ##Enable the Gnome Desktop Environment.
-  services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
- #environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator ];
- services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-  environment.gnome.excludePackages = (with pkgs; [
-  gnome-photos
-  gnome-tour
-]) ++ (with pkgs.gnome; [
-  cheese # webcam tool
-  gnome-music
-  gnome-terminal
-  pkgs.gedit # text editor
-  epiphany # web browser
-  geary # email reader
-  #evince # document viewer
-  gnome-characters
-  totem # video player
-  tali # poker game
-  iagno # go game
-  hitori # sudoku game
-  atomix # puzzle game
-  simple-scan
-  gnome-weather
-  gnome-contacts
-  gnome-calculator
-  pkgs.xterm
-  pkgs.gnome-text-editor
-]);
-
-    # Extra Window Managers
-  #services.xserver.windowManager.stumpwm.enable = true;
-  #services.xserver.windowManager.ratpoison.enable = true;
-  #services.xserver.windowManager.exwm.enable = true;
-  ##Enable the i3 Desktop Environment.
-  services.xserver.windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu #application launcher most people use
-        i3status # gives you the default i3 status bar
-        i3lock #default i3 screen locker
-        i3blocks #if you are planning on using i3blocks over i3status
-        pkgs.rofi
-        pkgs.networkmanagerapplet
-        pkgs.pasystray
-        pkgs.volumeicon
-        pkgs.pa_applet
-        pkgs.lxde.lxrandr
-     ];
-    };
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "gb";
     variant = "extd";
   };
 
-  #virtualisation.docker.enable = true;
-  virtualisation.libvirtd = {
-  enable = true;
-  qemu = {
-    package = pkgs.qemu_kvm;
-    runAsRoot = true;
-    swtpm.enable = true;
-    ovmf = {
-      enable = true;
-      packages = [(pkgs.OVMF.override {
-        secureBoot = true;
-        tpmSupport = true;
-      }).fd];
-    };
-  };
-};
-
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "networkmanager" "wheel" "root" "sunday" "qemu-libvirtd" "libvirtd" "video" "audio" "disk" "networkmanager" ];
-  environment.systemPackages = [ pkgs.vagrant ];
-  systemd.user.sockets.vagrant.listenStreams = [ "8880" ];
-  systemd.user.services.vagrant = {
-    path = with pkgs; [ vagrant virtualbox curl ];
-    script = "vagrant up --provision --no-tty --no-color";
-    serviceConfig.WorkingDirectory = "/home/sunday/vagrant";
-  };
-
-
   # Configure console keymap
   console.keyMap = "uk";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  services.avahi = {
-  enable = true;
-  nssmdns4 = true;
-  openFirewall = true;
-};
-
-  # Enable Flatpak
-  xdg.portal.enable = true;
-  #ervices.flatpak.enable = true;
-
-  #Enable DisplayLink Video Serice
-  services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
-
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  services.blueman.enable = true;
-
-  services.samba.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -232,68 +142,80 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sunday = {
+	# Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.sunday = {
     isNormalUser = true;
     description = "Sunday Oke";
-    extraGroups = [ "networkmanager" "wheel" "root" "qemu-libvirtd" "libvirtd" "video" "audio" "disk" "networkmanager" ];
+    extraGroups = [ "networkmanager" "wheel" "root" "qemu-libvirtd" "libvirtd" "video" "audio" "disk" "docker" "networkmanager" ];
     group = "users";
-    home = "/home/sunday";
-    uid = 1000;
+    #home = "/home/sunday";
+    #uid = 1000;
     packages = with pkgs; [
       #kdePackages.kate
-      thunderbird
+      #thunderbird
     ];
   };
 
+      ## Exclude the following packages from Gnome ##
+    environment.gnome.excludePackages = (with pkgs; [
+  gnome-photos
+  gnome-tour
+]) ++ (with pkgs; [
+  cheese # webcam tool
+  gnome-music
+  gnome-terminal
+  pkgs.gedit # text editor
+  epiphany # web browser
+  geary # email reader
+  #evince # document viewer
+  gnome-characters
+  totem # video player
+  tali # poker game
+  iagno # go game
+  hitori # sudoku game
+  atomix # puzzle game
+  simple-scan
+  gnome-weather
+  gnome-contacts
+  gnome-calculator
+  pkgs.xterm
+  pkgs.gnome-text-editor
+  pkgs.mate.mate-calc
+]);
+
+ # Extra Window Managers
+  #services.xserver.windowManager.stumpwm.enable = true;
+  #services.xserver.windowManager.ratpoison.enable = true;
+  #services.xserver.windowManager.exwm.enable = true;
+  ##Enable the i3 Desktop Environment.
+  services.xserver.windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        i3lock #default i3 screen locker
+        i3blocks #if you are planning on using i3blocks over i3status
+        pkgs.rofi
+        pkgs.networkmanagerapplet
+        pkgs.pasystray
+        pkgs.volumeicon
+        pkgs.pa_applet
+        pkgs.lxde.lxrandr
+     ];
+    };
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Install Steam
   programs.steam.enable = true;
 
-  programs.direnv.enable = true;
-
-  #programs.nm-applet.enable = true;
-
-  #Aliases
-  programs.bash.shellAliases = {
-  l = "ls -alh";
-  ll = "ls -l";
-  ls = "ls --color=tty";
-  cls = "clear";
-  CLS = "clear";
-};
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
 
+  #environment.systemPackages = with pkgs; [ gnomeExtensions.appindicator ];
+  services.udev.packages = with pkgs; [ pkgs.gnome-settings-daemon ];
 
-  fonts.packages = with pkgs; [
-  noto-fonts
-  noto-fonts-cjk
-  noto-fonts-emoji
-  liberation_ttf
-  fira-code
-  fira-code-symbols
-  mplus-outline-fonts.githubRelease
-  dina-font
-  proggyfonts
-  open-sans
-  fira-code
-  fira
-  cooper-hewitt
-  ibm-plex
-  jetbrains-mono
-  iosevka
-  # bitmap
-  spleen
-  fira-code-symbols
-  powerline-fonts
-  #nerdfonts
-];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_testing;
 
     boot.kernel.sysctl = {
     "kernel.sysrq" = 1;                       # SysRQ for is rebooting their machine properly if it freezes: SOURCE: https://oglo.dev/tutorials/sysrq/index.html
@@ -310,6 +232,7 @@
     "vm.swappiness" = 60;                      # how aggressively the kernel swaps data from RAM to disk. Lower values prioritize keeping data in RAM,
     "vm.vfs_cache_pressure" = 50;             # Adjust vfs_cache_pressure (0-1000), how the kernel reclaims memory used for caching filesystem objects
   };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -335,6 +258,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }

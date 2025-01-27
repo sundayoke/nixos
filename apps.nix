@@ -8,97 +8,66 @@ in
     #gnomeExtensions.appindicator
     vim # Do not forget to add an editor to edit configuration.nix! The Nano
   	wget
-    pkgs.notepadqq
-    pkgs.vscode
-    pkgs.opera
-    #pkgs.brave
-	  #pkgs.displaylink
+    vscode
+    pkgs.xfce.thunar
+    pkgs.git
+    pkgs.gnumake
+    pkgs.gettext
+    pkgs.gnome.gvfs
+    pkgs.direnv
     pkgs.keepassxc
+    pkgs.insync
+    pkgs.google-chrome
     pkgs.spotify
-    graphviz-nox
-    #pkgs.bottles
-    #pkgs.vagrant
-    pkgs.qemu
-    pkgs.virt-manager
-    pkgs.xfce.catfish
+    pkgs.notepadqq
+    pkgs.dconf-editor
+    pkgs.gnome-tweaks
     pkgs.zoom-us
+    pkgs.xfce.catfish
     pkgs.calibre
     pkgs.gimp-with-plugins
-    unstable.pkgs.libreoffice
-    pkgs.google-chrome
-    pkgs.vlc
+    pkgs.libreoffice
     pkgs.obs-studio
     pkgs.jdk
-    pkgs.insync
     pkgs.dialog
-    pkgs.kdePackages.partitionmanager
-    pkgs.microsoft-edge
-    #unstable.pkgs.haskellPackages.trim
     pkgs.python312Full
-    pkgs.git
     pkgs.libjpeg8
-    #pkgs.kdePackages.kalk
     pkgs.winetricks
-    pkgs.isoimagewriter
-    pkgs.discord
-    #pkgs.xfce.thunar
-    #unstable.pkgs.thunderbird-bin
-    #unstable.pkgs.thunderbird-latest-unwrapped
-    #pkgs.newt
     pkgs.lsof
-    pkgs.gnome.gnome-tweaks
     pkgs.gnupatch
     pkgs.libxml2
     pkgs.samba4Full
-    #pkgs.libxml2pkgs.xfce.thunar
     pkgs.bc
     pkgs.cabextract
-    #pkgs.wineWowPackages.stagingFull
-    unstable.pkgs.wineWowPackages.stagingFull
-    #pkgs.openvpn
+    pkgs.wineWowPackages.stagingFull
+    pkgs.bc
+    pkgs.wineWowPackages.stagingFull
     pkgs.fuse3
     pkgs.haskellPackages.libfuse3
-    #pkgs.apt
     pkgs.brlaser
-    #pkgs.appimage-run
     pkgs.kdePackages.kdialog
     pkgs.mktemp
-    #pkgs.kdePackages.kdenlive
-    #pkgs.maestral
-    #pkgs.maestral-gui
-    #pkgs.onedrive
-    #pkgs.onedrivegui
-    pkgs.gnome.zenity
-    #pkgs.kdePackages.kdevelop
-    #pkgs.discord
-    #pkgs.jupyter-all
-    #pkgs.python312Packages.python
+    pkgs.zenity
     pkgs.python312Packages.pip
-    #pkgs.python312Packages.virtualenv
-    ## beginning of LXQT an i3 installation ##
     pkgs.tk
     pkgs.wireguard-tools
-    #pkgs.nm-tray
-    #pkgs.dolphin
-    #pkgs.rofi
-    #pkgs.terminator
-    #pkgs.konsole
-    #pkgs.lxde.lxrandr
-    #pkgs.i3blocks
-    #pkgs.konsole
+    pkgs.networkmanager
+    pkgs.wg-netmanager
     pkgs.feh
-    pkgs.gnome.dconf-editor
-    #pkgs.libsForQt5.polkit-kde-agent
-    #pkgs.polkit_gnome
-    #pkgs.polkit
-    #pkgs.libsForQt5.polkit-qt
-    #pkgs.megasync
-    #pkgs.gnomeExtensions.mock-tray
-    #pkgs.docker
+    pkgs.dconf-editor
     pkgs.gparted
     pkgs.binutils
-    ];
-    sound.enable = true;
+    pkgs.apt
+    pkgs.coreutils-full
+    pkgs.gnupatch
+    pkgs.lsof
+    pkgs.findutils
+    pkgs.remmina
+    pkgs.gnome-text-editor
+    pkgs.mate.mate-calc
+    pkgs.opera
+      ];
+
   }
 
 

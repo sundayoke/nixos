@@ -23,6 +23,10 @@
 
   services.xserver.videoDrivers = [ "displaylink" "modesetting" ];
 
+  services.hardware.openrgb.enable = true;
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = [ pkgs.mesa.drivers ];
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -58,8 +62,8 @@
   virtualisation.docker.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  #services.xserver.displayManager.gdm.wayland.enable = true;
-  #services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.wayland.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   #services.wg-netmanager.enable = true;
 
@@ -73,14 +77,15 @@
 
   ## Enable the KDE Plasma Desktop Environment.
   #services.displayManager.sddm.wayland.enable = true;
+  #services.displayManager.sddm.enable = true;
   #services.desktopManager.plasma6.enable = true;
 
   ##Enable cinnamon
-  services.libinput.enable = true;
+  #services.libinput.enable = true;
   ###services.xserver.displayManager.lightdm.enable =true;
-  services.xserver.displayManager.gdm.wayland.enable = true;
-  services.xserver.desktopManager.cinnamon.enable = true;
-  services.displayManager.defaultSession = "cinnamon";
+  #services.xserver.displayManager.gdm.wayland.enable = true;
+  #services.xserver.desktopManager.cinnamon.enable = true;
+  #services.displayManager.defaultSession = "cinnamon";
 
 
   #environment.plasma6.excludePackages = with pkgs; [
@@ -121,6 +126,10 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable bluetooth
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -163,7 +172,7 @@
 ]) ++ (with pkgs; [
   cheese # webcam tool
   gnome-music
-  gnome-terminal
+  #gnome-terminal
   pkgs.gedit # text editor
   epiphany # web browser
   geary # email reader

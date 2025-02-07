@@ -21,7 +21,7 @@ in
     pkgs.spotify
     pkgs.notepadqq
     pkgs.dconf-editor
-    pkgs.gnome-tweaks
+    #pkgs.gnome-tweaks
     pkgs.zoom-us
     pkgs.xfce.catfish
     pkgs.calibre
@@ -41,18 +41,16 @@ in
     pkgs.cabextract
     pkgs.wineWowPackages.stagingFull
     pkgs.bc
-    pkgs.wineWowPackages.stagingFull
     pkgs.fuse3
     pkgs.haskellPackages.libfuse3
-    pkgs.brlaser
+    #pkgs.brlaser
     pkgs.kdePackages.kdialog
     pkgs.mktemp
     pkgs.zenity
     pkgs.python312Packages.pip
     pkgs.tk
-    pkgs.wireguard-tools
-    pkgs.networkmanager
-    pkgs.wg-netmanager
+    #pkgs.networkmanager
+    #pkgs.wg-netmanager
     pkgs.feh
     pkgs.dconf-editor
     pkgs.gparted
@@ -62,12 +60,15 @@ in
     pkgs.gnupatch
     pkgs.lsof
     pkgs.findutils
-    pkgs.remmina
     pkgs.gnome-text-editor
-    pkgs.mate.mate-calc
-    pkgs.opera
+    pkgs.bottles
+    #pkgs.pcloud
+    pkgs.mesa
+    pkgs.openrgb-with-all-plugins
+    #pkgs.driversi686Linux.mesa-demos
+    pkgs.haskellPackages.OpenGL
+
+
       ];
 
   }
-
-
